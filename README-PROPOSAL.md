@@ -4,7 +4,7 @@
 
 ### Description
 
-![image](proposal\proposalGIF.gif)
+![image](proposal/proposalGIF.gif)
 
 ### What - The Problem 
 
@@ -20,7 +20,7 @@ Art student.
 
 Sensor (Camera) collects images and pass it to Cloud. AI in cloud server analyze the image and convert the image to lines. Lines are passed to Actutors (Step Motor). Actutors draw these lines on paper. 
 
-![image](proposal\PIOT-Semester-Proposal.png)
+![image](proposal/PIOT-Semester-Proposal.png)
 
 ### Results - Expected Outcomes 
 
