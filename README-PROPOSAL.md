@@ -4,39 +4,26 @@
 
 ### Description
 
-On the following page(s), be sure to address the following four topics: 
-- What - The Problem
-- Why - Who Cares?
-- How - Expected Technical Approach
-- Results - Expected Outcomes
-
+![image](proposal\proposalGIF.gif)
 
 ### What - The Problem 
 
-NOTE: Write one or two paragraphs to answer EACH of the following questions.
+After AlphaGO beat Lee Se-dol in Go Game, Big data and AI is very popular in education. Korean e-sports players use AI to train themselves. Tianyi Wang, the current Rank No.1 Chinese chess player, other than traditional chess player who is trained by human chess master, is trained by AI since he was a boy. 
 
-What problem are you trying to solve and why does it matter?
-
+Maybe AI can not exceed human in many field. However, it can help human explore these field in-depth. My project is an IOT platform to train painter.
 
 ### Why - Who Cares? 
 
-Why do you care about this particular problem? 
- 
+Art student.
 
 ### How - Expected Technical Approach
 
-NOTE: Provide a high level design diagram depicting your planned technical approach. This should be a relatively
-simple block diagram - you do NOT need to create a UML diagram for the proposal, although you should provide
-specifics on which protocols you plan to use, where they’ll be used, and how you plan to communicate between
-your constrained device, gateway device, and cloud services. You may make changes to this for the final
-implementation if needed - this should serve merely as a guide. 
+Sensor (Camera) collects images and pass it to Cloud. AI in cloud server analyze the image and convert the image to lines. Lines are passed to Actutors (Step Motor). Actutors draw these lines on paper. 
 
- 
+![image](proposal\PIOT-Semester-Proposal.png)
+
 ### Results - Expected Outcomes 
 
-NOTE: Write one or two paragraphs to answer the following question.
-
-If your project is successful, what outcome do you expect (e.g. what will happen if everything works)? 
-
+When you stand in front of camera, a picture will be drawn automatically by the IOT platform in a specific artist's style.
 
 EOF.
