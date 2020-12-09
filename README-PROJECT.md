@@ -6,11 +6,6 @@ Be sure to implement all the PIOT-INF-12-* requirements listed at [PIOT-INF-12-0
 
 ### Description
 
-On the following page(s), be sure to address the following four topics: 
-- What - The Problem
-- Why - Who Cares?
-- How - Actual Technical Approach
-- Results - Actual Outcomes
 
 
 ### What - The Problem 
@@ -27,7 +22,13 @@ Art student.
 
 Hardware: 3 Step Motors, 3 A4988 step motor controller, 12v power adapter, LM78M12 voltage regulartor, LED, Respberry pi 3, relevent electronic components.
 
+-hardware design
+
 ![image](project/Hardware.png)
+
+-hardware real
+
+![image](project/hardwareReal.jpg)
 
 Software: CDA(Derive from Homework), GDA(rewrite in Qt C++), Cloud(Ubidots)
 
@@ -95,13 +96,17 @@ C
 
 #### Screen Shots Representing Visualized Data
 
-NOTE: Include (at least) TWO (2) screen shots - one showing at least 2 hours
-of time-series data from the CDA, and one showing an event being triggered
-that results in an actuation event sent to your GDA and then to your CDA.
+-2 hours data sending to cloud
 
--Triggered (send email)
+![image](project/cloudData.png)
+
+-Triggered (Ubidots alert and send email)
 
 ![image](project/Trigger.png)
+
+-Triggered (Finish processing camera data and send instructions to step motors)
+
+![image](project/outcome.gif)
 
 
 EOF.
