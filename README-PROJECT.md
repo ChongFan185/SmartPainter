@@ -30,6 +30,8 @@ Hardware: 3 Step Motors, 3 A4988 step motor controller, 12v power adapter, LM78M
 
 ![image](project/hardwareReal.jpg)
 
+![image](project/hardwareReal2.jpg)
+
 Software: CDA(Derive from Homework), GDA(rewrite in Qt C++), Cloud(Ubidots)
 
 -CDA (runs on Respberry Pi)
@@ -92,7 +94,9 @@ Software: CDA(Derive from Homework), GDA(rewrite in Qt C++), Cloud(Ubidots)
 
 #### Outcomes Achieved
 
-C 
+Camera on CDA can collect the process of painting and send it to GDA(as well as data collect by the other sensors). GDA will analyze these data and send it to cloud. AI on cloud may make use of these data to train model and send model parameters to GDA. GDA use the model to generate process of drawing and send instruction to CDA. CDA use step motors to draw pictures.
+
+![image](project/OutcomePic.jpg)
 
 #### Screen Shots Representing Visualized Data
 
