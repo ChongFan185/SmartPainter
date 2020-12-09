@@ -102,7 +102,7 @@ Camera on CDA can collect the process of painting and send it to GDA(as well as 
 
 -2 hours data sending to cloud
 
-![image](project/cloudData.png)
+![image](project/runing1h.png)
 
 -Triggered (Ubidots alert and send email)
 
