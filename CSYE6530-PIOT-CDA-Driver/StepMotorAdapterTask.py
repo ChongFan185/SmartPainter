@@ -1,12 +1,12 @@
 import RPi.GPIO as GPIO
 import time
-
+from time import sleep
 ##############
 # Author: Chong
-# Control step motor drawing
+# Driver for my 3-axis platform
 ##############
 
-class StepMotorTask():
+class StepMotorAdapterTask():
     lastPoint = (0,0);
     thisPoint = (0,0);
     
@@ -31,13 +31,20 @@ class StepMotorTask():
         GPIO.output(11,GPIO.HIGH)
         GPIO.output(13,GPIO.HIGH)
         GPIO.output(15,GPIO.HIGH)
-
+    
+    #########################
+    # Functioon moveTo(): Move on x and y simutaneously.
+    #
+    # param x: move x pixels in x axis
+    # param y: move y pixels in y axis
+    # param isDrawing: True/Fasle, set pen to up/down position
+    ###############################################
     def moveTo(self, x:int , y:int, isDrawing:bool):
         self.thisPoint = (x,y)
         mx = self.thisPoint[0]-self.lastPoint[0]
         my = self.thisPoint[1]-self.lastPoint[1]
         print(mx,":",my)
-        self.moveZ(isDrawing)
+        #self.moveZ(isDrawing)
         #move x
         GPIO.output(11,GPIO.LOW)
         GPIO.output(13,GPIO.LOW)
@@ -57,11 +64,11 @@ class StepMotorTask():
             step = mx
         else:
             step = my
-        for i in range(0,step*10):
+        for i in range(0,step*5):
             GPIO.output(33,GPIO.LOW)
-            time.sleep(0.01)
+            time.sleep(0.0005)
             GPIO.output(33,GPIO.HIGH)
-            time.sleep(0.01)
+            time.sleep(0.0005)
 
             if mx>my and i>=(my*10):
                 GPIO.output(13,GPIO.HIGH)
@@ -73,29 +80,41 @@ class StepMotorTask():
         #save this point
         self.lastPoint = self.thisPoint
     
-    def moveZ(self,isDrawing:bool):
+    #########################
+    # Functioon moveZ: Move on z axis
+    #
+    # param isDrawing: True/Fasle, set pen to up/down position
+    ###############################################
+    def moveZ(self,isDrawing:bool): #true up
         GPIO.output(15,GPIO.LOW)
         if isDrawing :
             GPIO.output(22,GPIO.HIGH)
-            self.generatePWM(40)
+            self.generatePWM(500)
         else:
             GPIO.output(22,GPIO.LOW)
-            self.generatePWM(40)
+            self.generatePWM(500)
         GPIO.output(15,GPIO.HIGH)
-
+        
+    #########################
+    # Functioon generatePWM(): Generate PWM wave for step motor.
+    #
+    # param step: cycles of PWM wave
     # 1 pixel = 10 step (0.25mm)    
     # total 320*320, 1 step 0.2(0.01*2*10)
+    #####################################################
     def generatePWM(self, step:int):
-        for i in range(0,step*10):
+        for i in range(0,step*2):
             GPIO.output(33,GPIO.LOW)
-            time.sleep(0.01)
+            time.sleep(0.0005)
             GPIO.output(33,GPIO.HIGH)
-            time.sleep(0.01)
+            time.sleep(0.0005)
 
     def test(self):
-        self.moveTo(-40,-40,True)
-        GPIO.cleanup()
+        #self.moveTo(-100,0,True)
+        self.moveZ(True)
+        #sleep(50)
+        #GPIO.cleanup()
 
 if __name__ == "__main__":
-    task = StepMotorTask()
+    task = StepMotorAdapterTask()
     task.test()
