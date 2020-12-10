@@ -17,6 +17,8 @@
 #include "Connection/httpconnector.h"
 #include "System/systemutil.h"
 
+#include "Data/redisconnector.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -60,6 +62,7 @@ private:
 
     MqttConnector *mqtt;
     HttpConnector *http;
+    RedisConnector *redis;
 
     SystemUtil *msys;
 

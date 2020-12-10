@@ -10,6 +10,8 @@ CONFIG += c++11
 SOURCES += \
     Connection/httpconnector.cpp \
     Connection/mqttconnector.cpp \
+    Data/qredis.cpp \
+    Data/redisconnector.cpp \
     Service/baseservice.cpp \
     Service/cameraservice.cpp \
     Service/paintservice.cpp \
@@ -21,6 +23,8 @@ SOURCES += \
 HEADERS += \
     Connection/httpconnector.h \
     Connection/mqttconnector.h \
+    Data/qredis.h \
+    Data/redisconnector.h \
     Service/baseservice.h \
     Service/cameraservice.h \
     Service/paintservice.h \

@@ -29,7 +29,7 @@ void ProcessService::ProcessImage(){
     source = cv::Mat(this->Image.height(), this->Image.width(), CV_8UC3, (void*)this->Image.constBits(), this->Image.bytesPerLine());
     //threshold(source, source, threshold_value, max_binary_value,0 );
     result = cv::Mat::zeros(source.rows, source.cols, CV_8UC3);
-    source = source >80;
+    source = source <40;
     cvtColor(source, source, cv::COLOR_BGR2GRAY);
     vector<cv::Vec4i> hierarchy;
     findContours( source, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE );

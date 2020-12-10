@@ -6,6 +6,8 @@
  * 1.Set up MainUI.
  * 2.Create app agent.
  * 3.Create Camera/Process/Paint Service (Thread).
+ * 4.Create Redis connection
+ * 5.Create Mqtt Coap Http connection
  *****************/
 
 MainWindow::MainWindow(QWidget *parent)
@@ -29,6 +31,8 @@ void MainWindow::initDataManager(){
     connect(msys,SIGNAL(SendCpuToUI(double)),this,SLOT(updateCpu(double)));
     connect(msys,SIGNAL(SendMemToUI(double,double)),this,SLOT(updateMem(double,double)));
     msys->start();
+
+    redis = new RedisConnector();
 }
 
 void MainWindow::initImageWidget(){
@@ -108,10 +112,14 @@ void MainWindow::on_stopButton_clicked()
 
 void MainWindow::updateCpu(double cpu){
     ui->label_cpu->setText("Cpu-  "+QString::number(cpu)+"%");
+    http->SendToCloud("Cpu",QString::number(cpu));
+    redis->save("cpu",QString::number(cpu));
 }
 
 void MainWindow::updateMem(double total,double used){
     ui->label_mem->setText("Memory-  "+QString::number(used)+"/"+QString::number(total));
+    http->SendToCloud("Mem",QString::number(used));
+    redis->save("mem",QString::number(used));
 }
 
 void MainWindow::updateInstuction(QPoint p){

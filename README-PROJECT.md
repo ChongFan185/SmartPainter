@@ -44,7 +44,7 @@ Software: CDA(Derive from Homework), GDA(rewrite in Qt C++), Cloud(Ubidots)
 
 -Cloud (ubidots)
 
-![image](project/GDA-CLOUD.png)
+![image](project/alldata.png)
 
 #### System Diagram
 
@@ -87,6 +87,10 @@ Software: CDA(Derive from Homework), GDA(rewrite in Qt C++), Cloud(Ubidots)
 -GDA Data Processing:
 
 ![image](project/processing.gif)
+
+-GDA connect to Redis
+
+![image](project/redis.png)
 
 -Cloud Data Visualization:
 
