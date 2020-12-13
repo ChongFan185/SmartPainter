@@ -1,0 +1,76 @@
+#####
+# 
+# This class is part of the Programming the Internet of Things
+# project, and is available via the MIT License, which can be
+# found in the LICENSE file at the top level of this repository.
+# 
+# Copyright (c) 2020 by Andrew D. King
+# 
+import sys
+sys.path.insert(0, '../../../../../../main/python')
+import logging
+import unittest
+
+from programmingtheiot.data.ActuatorData import ActuatorData
+
+class ActuatorDataTest(unittest.TestCase):
+	"""
+	This test case class contains very basic unit tests for
+	ActuatorData. It should not be considered complete,
+	but serve as a starting point for the student implementing
+	additional functionality within their Programming the IoT
+	environment.
+	"""
+	
+	DEFAULT_NAME = "ActuatorDataFooBar"
+	DEFAULT_STATE_DATA = "{state: None}"
+	DEFAULT_VALUE = 15.2
+	
+	@classmethod
+	def setUpClass(self):
+		logging.basicConfig(format = '%(asctime)s:%(module)s:%(levelname)s:%(message)s', level = logging.DEBUG)
+		logging.info("Testing ActuatorData class...")
+		
+	def setUp(self):
+		pass
+
+	def tearDown(self):
+		pass
+	
+	def testDefaultValues(self):
+		ad = ActuatorData()
+		
+		self.assertEqual(ad.getCommand(), ActuatorData.DEFAULT_COMMAND)
+		self.assertEqual(ad.getStatusCode(), ActuatorData.DEFAULT_STATUS)
+
+	def testParameterUpdates(self):
+		ad = self._createTestActuatorData()
+		
+		self.assertEqual(ad.getName(), self.DEFAULT_NAME)
+		self.assertEqual(ad.getCommand(), ActuatorData.COMMAND_ON)
+		self.assertEqual(ad.getStateData(), self.DEFAULT_STATE_DATA)
+		self.assertEqual(ad.getValue(), self.DEFAULT_VALUE)
+
+	def testFullUpdate(self):
+		ad = ActuatorData()
+		ad2 = self._createTestActuatorData()
+		
+		ad.updateData(ad2)
+		
+		self.assertEqual(ad.getCommand(), ActuatorData.COMMAND_ON)
+		self.assertEqual(ad.getStateData(), self.DEFAULT_STATE_DATA)
+		self.assertEqual(ad.getValue(), self.DEFAULT_VALUE)
+	
+	def _createTestActuatorData(self):
+		ad = ActuatorData()
+		
+		ad.setName(self.DEFAULT_NAME)
+		ad.setCommand(ActuatorData.COMMAND_ON)
+		ad.setStateData(self.DEFAULT_STATE_DATA)
+		ad.setValue(self.DEFAULT_VALUE)
+		
+		return ad
+
+if __name__ == "__main__":
+	unittest.main()
+	
